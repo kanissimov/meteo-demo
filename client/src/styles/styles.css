@@ -1,4 +1,11 @@
-.brand-logo .material-icons {
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
 }
 
 .brand-logo .material-icons.cloudy {
@@ -12,10 +19,4 @@
 
 .app-header .account {
   display: inline-block;
-}
-
-footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
 }

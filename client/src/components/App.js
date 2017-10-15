@@ -5,8 +5,17 @@ import * as actions from '../actions';
 
 import Header from './Header';
 import Footer from './Footer';
-import Dashboard from './Dashboard';
+import Main from './Main';
 import City from './City';
+
+const Layout = () => {
+  return [
+    <Header />,
+    <Route path="/" exact component={Main} />,
+    <Route path="/:city" exact component={City} />,
+    <Footer />
+  ];
+};
 
 class App extends Component {
   componentDidMount() {
@@ -16,14 +25,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div>
-          <Header />,
-          <main>
-            <Route path="/" exact component={Dashboard} />
-            <Route path="/:city" exact component={City} />
-          </main>,
-          <Footer />
-        </div>
+        <Layout />
       </BrowserRouter>
     );
   }

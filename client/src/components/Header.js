@@ -10,7 +10,7 @@ class Header extends Component {
       case false:
         return (
           <li>
-            <a className="indigo lighten-1 btn" href="/auth/google">
+            <a className="orange accent-3 btn" href="/auth/google">
               Login with Google
             </a>
           </li>
@@ -24,7 +24,7 @@ class Header extends Component {
             <span>{this.props.auth.name}</span>
           </li>,
           <li key="1">
-            <a className="indigo lighten-1 btn" href="/api/logout">
+            <a className="orange accent-3 btn" href="/api/logout">
               Logout
             </a>
           </li>
@@ -35,7 +35,7 @@ class Header extends Component {
   render() {
     return (
       <header>
-        <nav className="app-header teal lighten-3">
+        <nav className="app-header blue-grey">
           <div className="container">
             <Link to="/" className="brand-logo">
               <span>weather</span>
