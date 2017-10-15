@@ -5,4 +5,15 @@ const userSchema = new Schema({
   googleId: String
 });
 
-mongoose.model('users', userSchema);
+userSchema
+  .virtual('name')
+  .get(function() {
+    return this._name;
+  })
+  .set(function(v) {
+    this._name = v;
+  });
+
+const User = mongoose.model('users', userSchema);
+
+module.exports = User;

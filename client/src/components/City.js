@@ -2,7 +2,7 @@ import React from 'react';
 
 export default ({ city }) => {
   return (
-    <div>
+    <div className="container">
       <h3>Current Weather</h3>
     </div>
   );

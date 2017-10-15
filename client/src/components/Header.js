@@ -15,6 +15,7 @@ class Header extends Component {
         );
       default:
         return [
+          <li key="2">{this.props.auth.name}</li>,
           <li key="1">
             <a href="/api/logout">Logout</a>
           </li>
@@ -24,12 +25,17 @@ class Header extends Component {
 
   render() {
     return (
-      <div>
-        <Link to="/" className="brand-logo">
-          Weatherman
-        </Link>
-        <ul className="right">{this.renderContent()}</ul>
-      </div>
+      <nav>
+        <div className="container">
+          <Link to="/" className="brand-logo">
+            <i className="material-icons">ac_unit</i>
+            <span>weather</span>
+            <i className="material-icons">beach_access</i>
+            <span>man</span>
+          </Link>
+          <ul className="right">{this.renderContent()}</ul>
+        </div>
+      </nav>
     );
   }
 }
