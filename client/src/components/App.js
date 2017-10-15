@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 import Header from './Header';
+import Footer from './Footer';
 import Dashboard from './Dashboard';
 import City from './City';
 
@@ -14,15 +15,16 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <BrowserRouter>
-          <div>
-            <Header />
+      <BrowserRouter>
+        <div>
+          <Header />,
+          <main>
             <Route path="/" exact component={Dashboard} />
             <Route path="/:city" exact component={City} />
-          </div>
-        </BrowserRouter>
-      </div>
+          </main>,
+          <Footer />
+        </div>
+      </BrowserRouter>
     );
   }
 }

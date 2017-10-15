@@ -10,14 +10,23 @@ class Header extends Component {
       case false:
         return (
           <li>
-            <a href="/auth/google">Login With Google</a>
+            <a className="indigo lighten-1 btn" href="/auth/google">
+              Login with Google
+            </a>
           </li>
         );
       default:
         return [
-          <li key="2">{this.props.auth.name}</li>,
+          <li key="2">
+            <span className="account">
+              <i className="material-icons">account_circle</i>
+            </span>
+            <span>{this.props.auth.name}</span>
+          </li>,
           <li key="1">
-            <a href="/api/logout">Logout</a>
+            <a className="indigo lighten-1 btn" href="/api/logout">
+              Logout
+            </a>
           </li>
         ];
     }
@@ -25,20 +34,25 @@ class Header extends Component {
 
   render() {
     return (
-      <nav>
-        <div className="container">
-          <Link to="/" className="brand-logo">
-            <i className="material-icons">ac_unit</i>
-            <span>weather</span>
-            <i className="material-icons">beach_access</i>
-            <span>man</span>
-          </Link>
-          <ul className="right">{this.renderContent()}</ul>
-        </div>
-      </nav>
+      <header>
+        <nav className="app-header teal lighten-3">
+          <div className="container">
+            <Link to="/" className="brand-logo">
+              <span>weather</span>
+              <i className="cloudy material-icons">cloud_queue</i>
+              <i className="sunshine material-icons">wb_sunny</i>
+              <span>man</span>
+            </Link>
+            <ul className="right">{this.renderContent()}</ul>
+          </div>
+        </nav>
+      </header>
     );
   }
 }
+
+// <i className="material-icons">ac_unit</i>
+// <i className="material-icons">beach_access</i>
 
 function mapStateToProps({ auth }) {
   return { auth };
