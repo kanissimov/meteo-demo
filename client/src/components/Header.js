@@ -25,14 +25,13 @@ class Header extends Component {
           <li key="1">
             <button
               className="chip dropdown-button account btn-flat"
-              data-activates="dropdown1"
+              data-activates="user-menu"
             >
               <i className="material-icons">account_circle</i>
               {this.props.auth.name}
               <i className="material-icons right">arrow_drop_down</i>
             </button>
-            <ul id="dropdown1" className="dropdown-content">
-              <li className="divider" />
+            <ul id="user-menu" className="dropdown-content">
               <li>
                 <a href="/api/logout">Logout</a>
               </li>
@@ -59,9 +58,6 @@ class Header extends Component {
     );
   }
 }
-
-// <i className="material-icons">ac_unit</i>
-// <i className="material-icons">beach_access</i>
 
 function mapStateToProps({ auth }) {
   return { auth };

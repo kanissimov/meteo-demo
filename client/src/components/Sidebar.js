@@ -1,7 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
+import Search from './Search';
 
 class Sidebar extends Component {
+  constructor(props) {
+    super(props);
+    this.onSearch = this.onSearch.bind(this);
+  }
+
+  onSearch(q) {
+    this.props.fetchWeather(q);
+  }
+
   renderCard() {
     return (
       <div className="row">
@@ -28,33 +40,10 @@ class Sidebar extends Component {
     return (
       <div className="sidebar">
         {this.renderCard()}
-        <div className="row">
-          <div className="input-field col s8">
-            <input
-              type="text"
-              id="autocomplete-input"
-              className="autocomplete"
-            />
-            <label htmlFor="autocomplete-input">City</label>
-          </div>
-          <div className="input-field col s4">
-            <button
-              className="btn waves-effect waves-light"
-              type="submit"
-              name="action"
-            >
-              Go
-            </button>
-          </div>
-        </div>
+        <Search label="City" onSearch={this.onSearch} />
       </div>
     );
   }
 }
 
-export default Sidebar;
-
-/*
-
-
-*/
+export default connect(null, actions)(Sidebar);

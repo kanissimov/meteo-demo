@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import authReducer from './authReducer';
+import auth from './auth';
+import weather from './weather';
 
 export default combineReducers({
-  auth: authReducer
+  auth,
+  weather
 });
