@@ -34,8 +34,8 @@ class Sidebar extends Component {
               type="text"
               id="autocomplete-input"
               className="autocomplete"
-              placeholder="City"
             />
+            <label htmlFor="autocomplete-input">City</label>
           </div>
           <div className="input-field col s4">
             <button
@@ -55,6 +55,6 @@ class Sidebar extends Component {
 export default Sidebar;
 
 /*
-<label htmlFor="autocomplete-input">City</label>
+
 
 */
