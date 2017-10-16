@@ -18,10 +18,10 @@ class Header extends Component {
       default:
         return [
           <li key="2">
-            <span className="account">
+            <div className="chip account">
               <i className="material-icons">account_circle</i>
-            </span>
-            <span>{this.props.auth.name}</span>
+              {this.props.auth.name}
+            </div>
           </li>,
           <li key="1">
             <a className="orange accent-3 btn" href="/api/logout">
@@ -38,10 +38,9 @@ class Header extends Component {
         <nav className="app-header blue-grey">
           <div className="container">
             <Link to="/" className="brand-logo">
-              <span>weather</span>
               <i className="cloudy material-icons">cloud_queue</i>
               <i className="sunshine material-icons">wb_sunny</i>
-              <span>man</span>
+              Weatherman
             </Link>
             <ul className="right">{this.renderContent()}</ul>
           </div>

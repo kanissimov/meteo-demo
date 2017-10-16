@@ -1,4 +1,4 @@
-body {
+#root {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -18,5 +18,13 @@ main {
 }
 
 .app-header .account {
-  display: inline-block;
+  padding-left: 2px;
+  color: #607d8b;
+}
+
+.app-header .account .material-icons {
+  float: left;
+  font-size: 28px;
+  line-height: 32px;
+  padding-right: 8px;
 }

@@ -3,16 +3,16 @@ import React from 'react';
 
 export default () => {
   return (
-    <footer class="page-footer blue-grey lighten-2">
-      <div class="container">
-        <div class="row">
-          <div class="col l6 s12">
-            <h5 class="white-text">Footer Content</h5>
+    <footer className="page-footer blue-grey lighten-2">
+      <div className="container">
+        <div className="row">
+          <div className="col l6 s12">
+            <h5 className="white-text">Footer Content</h5>
           </div>
         </div>
       </div>
-      <div class="footer-copyright blue-grey">
-        <div class="container">
+      <div className="footer-copyright blue-grey">
+        <div className="container">
           © 2017 Copyright
           {/*<Link to="/" class="grey-text text-lighten-4 right">
             Home
