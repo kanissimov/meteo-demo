@@ -21,7 +21,7 @@ class Search extends Component {
     return (
       <div className="row">
         <form onSubmit={e => this.onFormSubmit(e)}>
-          <div className="input-field col s8">
+          <div className="input-field col s9">
             <input
               type="text"
               id="autocomplete-input"
@@ -31,13 +31,9 @@ class Search extends Component {
             />
             <label htmlFor="autocomplete-input">{this.props.label}</label>
           </div>
-          <div className="input-field col s4">
-            <button
-              className="btn waves-effect waves-light"
-              type="submit"
-              name="action"
-            >
-              Go
+          <div className="input-field col s3">
+            <button type="submit" className="btn-floating orange accent-3">
+              <i className="material-icons">search</i>
             </button>
           </div>
         </form>

@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import auth from './auth';
-import weather from './weather';
+import cities from './cities';
+import selected from './selected';
 
 export default combineReducers({
   auth,
-  weather
+  cities,
+  selected
 });

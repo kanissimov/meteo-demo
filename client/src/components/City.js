@@ -1,9 +1,15 @@
 import React from 'react';
 
-export default ({ city }) => {
+export default ({ data }) => {
   return (
-    <main className="container">
-      <h3>Current Weather</h3>
-    </main>
+    <div className="card blue-grey lighten-4">
+      <div className="card-content white-text">
+        <span className="card-title">{data.city.name}</span>
+        <p />
+      </div>
+      <div className="card-action">
+        <a to="/">Go home</a>
+      </div>
+    </div>
   );
 };

@@ -7,13 +7,3 @@ body #root {
 main {
   flex: 1 0 auto;
 }
-
-nav .brand-logo {
-  position: relative;
-  left: 0;
-  transform: none;
-}
-
-.dropdown-content.active {
-  margin-top: 35px;
-}

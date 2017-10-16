@@ -6,13 +6,12 @@ import * as actions from '../actions';
 import Header from './Header';
 import Footer from './Footer';
 import Main from './Main';
-import City from './City';
 
 const Layout = () => {
   return [
     <Header key="header" />,
     <Route key="1" path="/" exact component={Main} />,
-    <Route key="2" path="/:city" exact component={City} />,
+    <Route key="2" path="/:city" exact component={Main} />,
     <Footer key="footer" />
   ];
 };

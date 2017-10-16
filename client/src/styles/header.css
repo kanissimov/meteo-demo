@@ -1,10 +1,17 @@
+.app-header .brand-logo {
+  position: relative;
+  left: 0;
+  transform: none;
+  font-size: 24px;
+}
+
 .brand-logo .material-icons.cloudy {
-  font-size: 50px;
+  font-size: 46px;
   margin-right: 5px;
 }
 
 .brand-logo .material-icons.sunshine {
-  font-size: 40px;
+  font-size: 36px;
 }
 
 .app-header .account {
@@ -29,4 +36,8 @@
 
 .app-header .account .material-icons:last-child {
   margin-left: 0;
+}
+
+.dropdown-content.active {
+  margin-top: 35px;
 }

@@ -1,14 +1,30 @@
 import axios from 'axios';
-import { FETCH_USER, FETCH_WEATHER } from './types';
+import toastr from 'toastr';
+import {
+  FETCH_USER,
+  FETCH_CITY,
+  REMOVE_CITY,
+  SELECT_CITY,
+  CONTEXT_SAVED
+} from './types';
 
 export const fetchUser = () => async dispatch => {
-  const res = await axios.get('/api/current_user');
+  const request = await axios.get('/api/current_user');
 
-  dispatch({ type: FETCH_USER, payload: res.data });
+  dispatch({ type: FETCH_USER, payload: request.data });
 };
 
-export const fetchWeather = q => async dispatch => {
-  const request = await axios.post('/api/fetch_weather', { q });
+export const fetchCity = q => async dispatch => {
+  const request = await axios.post('/api/fetch_city', { q });
 
-  dispatch({ type: FETCH_WEATHER, payload: request.data });
+  dispatch({ type: FETCH_CITY, payload: request.data });
+};
+
+export const removeCity = id => ({ type: REMOVE_CITY, payload: id });
+export const selectCity = id => ({ type: SELECT_CITY, payload: id });
+
+export const saveContext = data => async dispatch => {
+  await axios.post('/api/save_context', data);
+  toastr.success('Updated');
+  dispatch({ type: CONTEXT_SAVED, payload: null });
 };
