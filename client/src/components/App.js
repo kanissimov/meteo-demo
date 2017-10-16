@@ -10,10 +10,10 @@ import City from './City';
 
 const Layout = () => {
   return [
-    <Header key="0" />,
+    <Header key="header" />,
     <Route key="1" path="/" exact component={Main} />,
     <Route key="2" path="/:city" exact component={City} />,
-    <Footer key="9" />
+    <Footer key="footer" />
   ];
 };
 

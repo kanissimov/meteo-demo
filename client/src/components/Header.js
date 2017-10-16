@@ -1,8 +1,13 @@
+import $ from 'jquery';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 class Header extends Component {
+  componentDidUpdate() {
+    $('.dropdown-button').dropdown();
+  }
+
   renderContent() {
     switch (this.props.auth) {
       case null:
@@ -17,16 +22,21 @@ class Header extends Component {
         );
       default:
         return [
-          <li key="2">
-            <div className="chip account">
+          <li key="1">
+            <button
+              className="chip dropdown-button account btn-flat"
+              data-activates="dropdown1"
+            >
               <i className="material-icons">account_circle</i>
               {this.props.auth.name}
-            </div>
-          </li>,
-          <li key="1">
-            <a className="orange accent-3 btn" href="/api/logout">
-              Logout
-            </a>
+              <i className="material-icons right">arrow_drop_down</i>
+            </button>
+            <ul id="dropdown1" className="dropdown-content">
+              <li className="divider" />
+              <li>
+                <a href="/api/logout">Logout</a>
+              </li>
+            </ul>
           </li>
         ];
     }

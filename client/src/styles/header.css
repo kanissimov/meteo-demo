@@ -1,13 +1,3 @@
-#root {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-main {
-  flex: 1 0 auto;
-}
-
 .brand-logo .material-icons.cloudy {
   font-size: 50px;
   margin-right: 5px;
@@ -19,12 +9,24 @@ main {
 
 .app-header .account {
   padding-left: 2px;
+  padding-right: 0;
   color: #607d8b;
 }
 
+.app-header .account:focus {
+  background-color: #e4e4e4;
+}
+
 .app-header .account .material-icons {
-  float: left;
   font-size: 28px;
   line-height: 32px;
+}
+
+.app-header .account .material-icons:first-child {
+  float: left;
   padding-right: 8px;
+}
+
+.app-header .account .material-icons:last-child {
+  margin-left: 0;
 }
