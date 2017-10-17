@@ -14,6 +14,20 @@
   font-size: 36px;
 }
 
+.app-header .search-wrapper {
+  width: 250px;
+  margin-right: 30px;
+}
+
+.app-header .search-wrapper .prefix.active {
+  color: #ff9100;
+}
+
+.app-header .search-wrapper input:focus {
+  border-bottom-color: #ff9100 !important;
+  box-shadow: 0 1px 0 0 #ff9100 !important;
+}
+
 .app-header .account {
   padding-left: 2px;
   padding-right: 0;

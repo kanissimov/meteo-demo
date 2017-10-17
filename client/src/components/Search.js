@@ -6,11 +6,14 @@ class Search extends Component {
     this.state = { q: '' };
   }
 
-  onFormSubmit(event) {
-    event.preventDefault();
-
+  onSubmit() {
     this.props.onSearch(this.state.q);
     this.setState({ q: '' });
+  }
+
+  onFormSubmit(event) {
+    event.preventDefault();
+    this.onSubmit();
   }
 
   onInputChange(event) {
@@ -19,25 +22,20 @@ class Search extends Component {
 
   render() {
     return (
-      <div className="row">
-        <form onSubmit={e => this.onFormSubmit(e)}>
-          <div className="input-field col s9">
-            <input
-              type="text"
-              id="autocomplete-input"
-              value={this.state.q}
-              onChange={e => this.onInputChange(e)}
-              className="autocomplete"
-            />
-            <label htmlFor="autocomplete-input">{this.props.label}</label>
-          </div>
-          <div className="input-field col s3">
-            <button type="submit" className="btn-floating orange accent-3">
-              <i className="material-icons">search</i>
-            </button>
-          </div>
-        </form>
-      </div>
+      <form onSubmit={e => this.onFormSubmit(e)}>
+        <div className="input-field">
+          <i className="material-icons prefix" onClick={() => this.onSubmit()}>
+            search
+          </i>
+          <input
+            id="search-input"
+            type="text"
+            value={this.state.q}
+            onChange={e => this.onInputChange(e)}
+            placeholder={this.props.label}
+          />
+        </div>
+      </form>
     );
   }
 }
