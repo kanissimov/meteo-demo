@@ -13,7 +13,7 @@ export default () => {
       </div>
       <div className="footer-copyright blue-grey">
         <div className="container">
-          © 2017 Copyright
+          © 2017 K Anissimov
           {/*<Link to="/" class="grey-text text-lighten-4 right">
             Home
           </Link>*/}

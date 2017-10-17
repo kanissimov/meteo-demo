@@ -1,5 +1,6 @@
 import React from 'react';
 import Sidebar from './Sidebar';
+import Details from './Details';
 
 const Main = () => {
   return (
@@ -9,7 +10,7 @@ const Main = () => {
           <Sidebar />
         </div>
         <div className="col s12 m8 l9">
-          <h3>Dashboard</h3>
+          <Details />
         </div>
       </div>
     </main>

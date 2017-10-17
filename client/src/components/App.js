@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
+import { fetchContext } from '../actions';
 
 import Header from './Header';
 import Footer from './Footer';
@@ -30,4 +30,4 @@ class App extends Component {
   }
 }
 
-export default connect(null, actions)(App);
+export default connect(null, { fetchContext })(App);

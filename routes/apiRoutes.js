@@ -31,7 +31,6 @@ module.exports = app => {
     if (user) {
       const cities = await Promise.all(
         user.cities.map(async city => {
-          console.log(`city id: ${city.cityId}`);
           return await weather.getInfo({ id: city.cityId });
         })
       );
