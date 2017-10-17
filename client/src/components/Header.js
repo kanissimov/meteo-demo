@@ -6,6 +6,17 @@ import Account from './Account';
 import Search from './Search';
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.onSave = this.onSave.bind(this);
+  }
+
+  onSave() {
+    const { cities, selectedCity } = this.props;
+    const ids = cities.map(e => e.city.id);
+    this.props.saveContext({ cities: ids, selectedCity });
+  }
+
   render() {
     return (
       <header>
@@ -20,14 +31,11 @@ class Header extends Component {
               <li className="search-wrapper">
                 <Search
                   label="Add city..."
-                  onSearch={q => this.props.fetchCity(q)}
+                  onSearch={q => this.props.fetchCity({ q })}
                 />
               </li>
               <li>
-                <Account
-                  user={this.props.auth}
-                  onSave={this.props.saveContext}
-                />
+                <Account user={this.props.auth} onSave={this.onSave} />
               </li>
             </ul>
           </div>
@@ -37,8 +45,8 @@ class Header extends Component {
   }
 }
 
-function mapStateToProps({ auth }) {
-  return { auth };
+function mapStateToProps({ auth, cities, selectedCity }) {
+  return { auth, cities, selectedCity };
 }
 
 export default connect(mapStateToProps, { saveContext, fetchCity })(Header);

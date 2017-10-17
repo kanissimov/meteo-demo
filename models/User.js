@@ -1,8 +1,11 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+const CitySchema = require('./City');
 
 const userSchema = new Schema({
-  googleId: String
+  googleId: String,
+  cities: [CitySchema],
+  selectedCity: Number
 });
 
 userSchema
