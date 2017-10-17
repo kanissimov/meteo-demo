@@ -17,12 +17,12 @@ class Sidebar extends Component {
   }
 
   renderCities() {
-    return this.props.cities.map(data => {
+    return this.props.cities.map(city => {
       return (
         <City
-          key={data.city.id}
-          data={data}
-          selected={data.city.id === this.props.selectedCity}
+          key={city.id}
+          city={city}
+          selected={city.id === this.props.selectedCity}
           onRemove={this.onRemove}
           onSelect={id => this.props.selectCity(id)}
         />

@@ -22,7 +22,7 @@ export const saveContext = data => async dispatch => {
 export const fetchCity = ({ q, id }) => async dispatch => {
   const request = await axios.post('/api/fetch_city', { q, id });
   dispatch({ type: FETCH_CITY, payload: request.data });
-  return request.data.city ? request.data.city.id : null;
+  return request.data ? request.data.id : null;
 };
 
 export const removeCity = id => ({ type: REMOVE_CITY, payload: id });

@@ -1,12 +1,12 @@
 import React from 'react';
 
-export default ({ data, onRemove, onSelect, selected }) => {
-  const { id } = data.city;
+export default ({ city, onRemove, onSelect, selected }) => {
+  const { id } = city;
   const classes = selected ? 'blue-grey' : 'blue-grey lighten-4';
   return (
     <div className={`card ${classes}`}>
       <div className="card-content white-text" onClick={() => onSelect(id)}>
-        <span className="card-title">{data.city.name}</span>
+        <span className="card-title">{city.name}</span>
         <p />
       </div>
       <div className="card-action">

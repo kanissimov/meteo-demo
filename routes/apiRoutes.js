@@ -2,9 +2,14 @@ const weather = require('../services/weather');
 
 module.exports = app => {
   app.post('/api/fetch_city', async (req, res) => {
-    const { q, id } = req.body;
-    const forecast = await weather.getForecast({ q, id });
-    res.send(forecast);
+    try {
+      const { q, id } = req.body;
+      const info = await weather.getInfo({ q, id });
+      res.send(info);
+    } catch (err) {
+      console.log(err);
+      res.status(422).send(err);
+    }
   });
 
   app.post('/api/save_context', async (req, res) => {
@@ -24,14 +29,16 @@ module.exports = app => {
   app.get('/api/fetch_context', async (req, res) => {
     const user = req.user && req.user.toObject({ virtuals: true });
     if (user) {
+      const cities = await Promise.all(
+        user.cities.map(async city => {
+          console.log(`city id: ${city.cityId}`);
+          return await weather.getInfo({ id: city.cityId });
+        })
+      );
       const context = {
         user: { name: user.name },
         selectedCity: user.selectedCity,
-        cities: await Promise.all(
-          user.cities.map(async city => {
-            return await weather.getForecast({ id: city.cityId });
-          })
-        )
+        cities: cities
       };
       res.send(context);
     } else {

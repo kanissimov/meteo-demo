@@ -6,11 +6,11 @@ export default function(state = [], action) {
       return action.payload.cities || state;
     case FETCH_CITY:
       return action.payload &&
-        !(state.findIndex(e => e.city.id === action.payload.city.id) >= 0)
+        !(state.findIndex(e => e.id === action.payload.id) >= 0)
         ? [action.payload, ...state]
         : state;
     case REMOVE_CITY:
-      return state.filter(e => e.city.id !== action.payload);
+      return state.filter(e => e.id !== action.payload);
     default:
       return state;
   }

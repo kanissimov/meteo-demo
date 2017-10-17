@@ -14,7 +14,7 @@ class Header extends Component {
 
   onSave() {
     const { cities, selectedCity } = this.props;
-    const ids = cities.map(e => e.city.id);
+    const ids = cities.map(city => city.id);
     this.props.saveContext({ cities: ids, selectedCity });
   }
 
