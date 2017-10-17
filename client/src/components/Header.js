@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { saveContext, fetchCity } from '../actions';
+import { saveContext, fetchCity, selectCity } from '../actions';
 import Account from './Account';
 import Search from './Search';
 
@@ -9,12 +9,20 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.onSave = this.onSave.bind(this);
+    this.onSearch = this.onSearch.bind(this);
   }
 
   onSave() {
     const { cities, selectedCity } = this.props;
     const ids = cities.map(e => e.city.id);
     this.props.saveContext({ cities: ids, selectedCity });
+  }
+
+  async onSearch(q) {
+    const id = await this.props.fetchCity({ q });
+    if (id) {
+      this.props.selectCity(id);
+    }
   }
 
   render() {
@@ -29,10 +37,7 @@ class Header extends Component {
             </Link>
             <ul className="right">
               <li className="search-wrapper">
-                <Search
-                  label="Add city..."
-                  onSearch={q => this.props.fetchCity({ q })}
-                />
+                <Search label="Add city..." onSearch={this.onSearch} />
               </li>
               <li>
                 <Account user={this.props.auth} onSave={this.onSave} />
@@ -49,4 +54,6 @@ function mapStateToProps({ auth, cities, selectedCity }) {
   return { auth, cities, selectedCity };
 }
 
-export default connect(mapStateToProps, { saveContext, fetchCity })(Header);
+export default connect(mapStateToProps, { saveContext, fetchCity, selectCity })(
+  Header
+);

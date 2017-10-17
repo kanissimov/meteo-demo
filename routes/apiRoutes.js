@@ -24,17 +24,18 @@ module.exports = app => {
   app.get('/api/fetch_context', async (req, res) => {
     const user = req.user && req.user.toObject({ virtuals: true });
     if (user) {
-      res.send({
-        user,
+      const context = {
+        user: { name: user.name },
         selectedCity: user.selectedCity,
         cities: await Promise.all(
           user.cities.map(async city => {
             return await weather.getForecast({ id: city.cityId });
           })
         )
-      });
+      };
+      res.send(context);
     } else {
-      res.send(false);
+      res.send(null);
     }
   });
 };

@@ -16,34 +16,15 @@ export const fetchContext = () => async dispatch => {
 export const saveContext = data => async dispatch => {
   await axios.post('/api/save_context', data);
   toastr.success('Updated');
-
   dispatch({ type: CONTEXT_SAVED, payload: null });
 };
 
-export const fetchCity = ({ q }) => async dispatch => {
-  const request = await axios.post('/api/fetch_city', { q });
-
+export const fetchCity = ({ q, id }) => async dispatch => {
+  const request = await axios.post('/api/fetch_city', { q, id });
   dispatch({ type: FETCH_CITY, payload: request.data });
+  return request.data.city ? request.data.city.id : null;
 };
 
 export const removeCity = id => ({ type: REMOVE_CITY, payload: id });
+
 export const selectCity = id => ({ type: SELECT_CITY, payload: id });
-
-/*
-FETCH_USER,
-
-export const fetchUser = () => async dispatch => {
-  const request = await axios.get('/api/current_user');
-  const user = request.data;
-  dispatch({ type: FETCH_USER, payload: user });
-  if (user) {
-    user.cities.forEach(async city => {
-      const request = await axios.post('/api/fetch_city', {
-        id: city.cityId
-      });
-      dispatch({ type: FETCH_CITY, payload: request.data });
-    });
-    dispatch({ type: SELECT_CITY, payload: user.selectedCity });
-  }
-};
-*/

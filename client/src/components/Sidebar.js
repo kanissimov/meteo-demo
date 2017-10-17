@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
+import { selectCity, removeCity } from '../actions';
 import City from './City';
 
 class Sidebar extends Component {
@@ -9,8 +9,8 @@ class Sidebar extends Component {
     this.onRemove = this.onRemove.bind(this);
   }
 
-  onRemove(id) {
-    this.props.removeCity(id);
+  async onRemove(id) {
+    await this.props.removeCity(id);
     if (this.props.cities[0]) {
       this.props.selectCity(this.props.cities[0].city.id);
     }
@@ -39,4 +39,4 @@ function mapStateToProps({ cities, selectedCity }) {
   return { cities, selectedCity };
 }
 
-export default connect(mapStateToProps, actions)(Sidebar);
+export default connect(mapStateToProps, { selectCity, removeCity })(Sidebar);

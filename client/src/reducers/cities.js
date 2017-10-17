@@ -7,7 +7,7 @@ export default function(state = [], action) {
     case FETCH_CITY:
       return action.payload &&
         !(state.findIndex(e => e.city.id === action.payload.city.id) >= 0)
-        ? [...state, action.payload]
+        ? [action.payload, ...state]
         : state;
     case REMOVE_CITY:
       return state.filter(e => e.city.id !== action.payload);
