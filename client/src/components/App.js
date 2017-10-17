@@ -18,7 +18,7 @@ const Layout = () => {
 
 class App extends Component {
   componentDidMount() {
-    this.props.fetchUser();
+    this.props.fetchContext();
   }
 
   render() {

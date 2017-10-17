@@ -1,4 +1,5 @@
 const passport = require('passport');
+const weather = require('../services/weather');
 
 module.exports = app => {
   app.get(
@@ -17,7 +18,7 @@ module.exports = app => {
     res.redirect('/');
   });
 
-  app.get('/api/current_user', (req, res) => {
-    res.send(req.user ? req.user.toObject({ virtuals: true }) : null);
-  });
+  //  app.get('/api/current_user', async (req, res) => {
+  //    res.send(req.user ? req.user.toObject({ virtuals: true }) : null);
+  //  });
 };

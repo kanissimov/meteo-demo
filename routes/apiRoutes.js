@@ -1,16 +1,10 @@
-const axios = require('axios');
-const keys = require('../config/keys');
+const weather = require('../services/weather');
 
 module.exports = app => {
   app.post('/api/fetch_city', async (req, res) => {
-    const prefix = 'http://api.openweathermap.org/data/2.5/forecast';
     const { q, id } = req.body;
-    const query = id ? `&id=${id}` : `&q=${q}`;
-    const url = `${prefix}?appid=${keys.openWeatherMapKey}${query}`;
-    console.log(url);
-    const request = await axios.get(url);
-
-    res.send(request.data);
+    const forecast = await weather.getForecast({ q, id });
+    res.send(forecast);
   });
 
   app.post('/api/save_context', async (req, res) => {
@@ -24,6 +18,23 @@ module.exports = app => {
     } catch (err) {
       console.log(err);
       res.status(422).send(err);
+    }
+  });
+
+  app.get('/api/fetch_context', async (req, res) => {
+    const user = req.user && req.user.toObject({ virtuals: true });
+    if (user) {
+      res.send({
+        user,
+        selectedCity: user.selectedCity,
+        cities: await Promise.all(
+          user.cities.map(async city => {
+            return await weather.getForecast({ id: city.cityId });
+          })
+        )
+      });
+    } else {
+      res.send(false);
     }
   });
 };
