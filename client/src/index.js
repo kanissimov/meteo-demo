@@ -5,6 +5,7 @@ import './styles/layout.css';
 import './styles/header.css';
 import './styles/sidebar.css';
 import './styles/transitions.css';
+import './styles/chart.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';

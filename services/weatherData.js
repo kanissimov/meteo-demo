@@ -1,6 +1,7 @@
 const celsius = temp => Math.round(temp - 273.15);
 
-module.exports = (currentData, forecastData) => {
+module.exports = (currentData, forecastData, tzData) => {
+  const tzOffset = (tzData.rawOffset || 0) + (tzData.dstOffset || 0);
   const {
     id,
     name,
@@ -50,9 +51,10 @@ module.exports = (currentData, forecastData) => {
       description,
       icon
     } = data.weather[0];
-    const { dt, clouds, wind } = data;
+    const { dt, dt_txt, clouds, wind } = data;
     return {
       dt,
+      dt_txt,
       temp: celsius(temp),
       temp_min: celsius(temp_min),
       temp_max: celsius(temp_max),
@@ -74,6 +76,7 @@ module.exports = (currentData, forecastData) => {
     name,
     country,
     coords,
+    tzOffset,
     sunrise,
     sunset,
     current,

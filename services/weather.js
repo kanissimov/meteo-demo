@@ -1,6 +1,8 @@
 const axios = require('axios');
 const keys = require('../config/keys');
 const weatherData = require('./weatherData');
+const getTimeZone = require('./timeZone');
+const util = require('util');
 
 const getForecast = async ({ q, id }) => {
   const prefix = 'http://api.openweathermap.org/data/2.5/forecast';
@@ -20,8 +22,13 @@ const getCurrent = async id => {
 const getInfo = async ({ q, id: cityId }) => {
   const forecastData = await getForecast({ q, id: cityId });
   const currentData = await getCurrent(forecastData.city.id);
-  // console.log(`current: ${JSON.stringify(currentData)}`);
-  return weatherData(currentData, forecastData);
+  const tzData = await getTimeZone({
+    lat: currentData.coord.lat,
+    lon: currentData.coord.lon,
+    timestamp: currentData.dt
+  });
+  // console.log(`current: ${util.inspect(tzData)}`);
+  return weatherData(currentData, forecastData, tzData);
 };
 
 module.exports = { getCurrent, getCurrent, getInfo };

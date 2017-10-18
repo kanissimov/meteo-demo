@@ -1,9 +1,30 @@
 export default city => {
-  const temp = (city.forecast || []).map((e, i) => ({
-    x: new Date(e.dt * 1000).getTime(),
-    y: e.temp
-  }));
-  // console.log(temp);
+  const temp = (city.forecast || []).map((e, i) => {
+    //let utcDate = new Date(e.dt * 1000);
+    let tzDate = new Date((e.dt + city.tzOffset) * 1000);
+    let hours = tzDate.getHours();
+    let isLabel = hours >= 12 && hours < 15;
+    if (isLabel) {
+      console.log(`hours: ${hours}`);
+    }
+
+    return {
+      x: tzDate.getTime(),
+      y: e.temp,
+      marker: {
+        enabled: isLabel
+      },
+      dataLabels: {
+        enabled: isLabel,
+        useHTML: true,
+        formatter: () => {
+          const url = `https://openweathermap.org/img/w/${e.icon}.png`;
+          return `<div class="chart-label"><img src="${url}" /><div>${e.temp}°C</div></div>`;
+        }
+      }
+    };
+  });
+  //console.log(temp);
   const config = {
     chart: {},
     title: {
@@ -22,10 +43,10 @@ export default city => {
     },
     plotOptions: {
       areaspline: {
-        lineWidth: 4,
+        lineWidth: 1,
         states: {
           hover: {
-            lineWidth: 5
+            lineWidth: 2
           }
         },
         marker: {
@@ -37,6 +58,7 @@ export default city => {
       {
         name: 'Temperature',
         type: 'areaspline',
+        fillOpacity: 0.1,
         data: temp
       }
     ]
