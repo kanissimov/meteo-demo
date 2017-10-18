@@ -1,6 +1,8 @@
 ## Météo Demo Project
 
-Simple full-stack demo project, technologies used:
+https://meteo-demo.herokuapp.com
+
+Simple full-stack demo project, with the following technologies used:
 
 backend:
 - NodeJS
@@ -17,5 +19,3 @@ frontend:
 integrations:
 - openweathermap.org
 - Google OAuth
-
-https://meteo-demo.herokuapp.com
