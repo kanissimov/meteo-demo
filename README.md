@@ -1,19 +1,20 @@
 ## Météo Demo Project
 
-Simple full-stack demo project.
+Simple full-stack demo project, technologies used:
 
-technologies used:
-[backend]
+backend:
 - NodeJS
 - express
 - mongoose with hosted MongoDB
 - passport (for Google authentication)
-[frontend]
+
+frontend:
 - ReactJS v16
 - Redux
 - Materialize CSS
 - Highcharts
-[integrations]
+
+integrations:
 - openweathermap.org
 - Google OAuth
 
