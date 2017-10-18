@@ -13,14 +13,18 @@
   cursor: pointer;
 }
 
-.sidebar .card .card-content .card-title {
+.sidebar .card .city-name {
   margin-left: 50px;
   margin-bottom: 0;
 }
 
+.sidebar .card.active .city-name {
+  font-weight: bold;
+}
+
 .sidebar .weather-icon {
   position: absolute;
-  left: 0;
+  left: 5px;
   top: 0;
 }
 

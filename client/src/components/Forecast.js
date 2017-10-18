@@ -9,7 +9,6 @@ class Forecast extends Component {
 
   render() {
     const { config } = this.props;
-
     return config ? <ReactHighcharts config={config} ref="chart" /> : <div />;
   }
 }

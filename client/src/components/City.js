@@ -2,11 +2,11 @@ import React from 'react';
 
 export default ({ city, onRemove, onSelect, selected }) => {
   const { id } = city;
-  const classes = selected ? 'blue-grey' : 'blue-grey lighten-3';
+  const classes = selected ? 'blue-grey active' : 'blue-grey lighten-3';
   return (
     <div className={`card ${classes}`}>
       <div className="card-content white-text" onClick={() => onSelect(id)}>
-        <div className="card-title">{`${city.name}`}</div>
+        <div className="card-title city-name">{`${city.name}`}</div>
         <div className="weather-icon">
           <img
             alt=""
