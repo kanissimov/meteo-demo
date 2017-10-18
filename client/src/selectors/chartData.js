@@ -3,7 +3,7 @@ export default city => {
     x: new Date(e.dt * 1000).getTime(),
     y: e.temp
   }));
-  console.log(temp);
+  // console.log(temp);
   const config = {
     chart: {},
     title: {
