@@ -28,7 +28,7 @@ export default city => {
   const config = {
     chart: {},
     title: {
-      text: `5 Day Forecast for ${city.name}, ${city.country}`
+      text: city.name ? `5 Day Forecast for ${city.name}, ${city.country}` : ''
     },
     xAxis: {
       type: 'datetime'
