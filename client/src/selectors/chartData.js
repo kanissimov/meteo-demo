@@ -1,11 +1,7 @@
 export default city => {
   const temp = (city.forecast || []).map((e, i) => ({
     x: new Date(e.dt * 1000).getTime(),
-    y: e.temp,
-    marker:
-      i === 10
-        ? { symbol: `url(https://openweathermap.org/img/w/${e.icon}.png)` }
-        : null
+    y: e.temp
   }));
   console.log(temp);
   const config = {
@@ -50,6 +46,13 @@ export default city => {
 };
 
 /*
+
+,
+marker:
+  i === 10
+    ? { symbol: `url(https://openweathermap.org/img/w/${e.icon}.png)` }
+    : null
+
 marker: {
   symbol: `url(https://openweathermap.org/img/w/${e.icon}.png)`
 }
