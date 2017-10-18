@@ -6,10 +6,10 @@ const Main = () => {
   return (
     <main className="container">
       <div className="row">
-        <div className="col s12 m4 l3">
+        <div className="col s12 m4">
           <Sidebar />
         </div>
-        <div className="col s12 m8 l9">
+        <div className="col s12 m8">
           <Details />
         </div>
       </div>

@@ -12,17 +12,18 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
-    "highcharts": "^5.0.14",
-    "immutable": "^3.8.2",
+    "highcharts": "^6.0.1",
     "materialize-css": "^0.100.2",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-jsx-highcharts": "^2.0.0",
+    "react-highcharts": "^13.0.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.14",
+    "react-transition-group": "^2.2.1",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.1",
     "toastr": "^2.1.2"
   },
   "scripts": {

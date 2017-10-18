@@ -15,14 +15,14 @@ module.exports = (currentData, forecastData) => {
   const { country, sunrise, sunset } = currentData.sys;
   const { temp, pressure, humidity, temp_min, temp_max } = currentData.main;
   const {
-    id: conditionsId,
-    main: conditions,
+    id: conditionId,
+    main: condition,
     description,
     icon
-  } = currentData.weather;
+  } = currentData.weather[0];
   const current = {
-    conditions,
-    conditionsId,
+    condition,
+    conditionId,
     description,
     icon,
     temp: celsius(temp),
@@ -45,8 +45,8 @@ module.exports = (currentData, forecastData) => {
       grnd_lvel
     } = data.main;
     const {
-      id: conditionsId,
-      main: conditions,
+      id: conditionId,
+      main: condition,
       description,
       icon
     } = data.weather[0];
@@ -56,8 +56,8 @@ module.exports = (currentData, forecastData) => {
       temp: celsius(temp),
       temp_min: celsius(temp_min),
       temp_max: celsius(temp_max),
-      conditionsId,
-      conditions,
+      conditionId,
+      condition,
       description,
       icon,
       humidity,

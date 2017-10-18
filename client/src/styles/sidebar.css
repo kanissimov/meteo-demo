@@ -1,0 +1,39 @@
+.sidebar .card .card-content {
+  padding: 5px 10px;
+}
+
+.sidebar .close-button {
+  font-size: 16px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.sidebar .close-button:hover {
+  cursor: pointer;
+}
+
+.sidebar .card .card-content .card-title {
+  margin-left: 50px;
+  margin-bottom: 0;
+}
+
+.sidebar .weather-icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.sidebar .temperature {
+  font-size: 45px;
+  text-align: right;
+}
+
+.sidebar .card .row {
+  margin-bottom: 5px;
+}
+
+.sidebar .summary {
+  font-size: 13px;
+  padding-left: 15px;
+}

@@ -3,6 +3,8 @@ import 'materialize-css/dist/js/materialize';
 import 'toastr/build/toastr.min.css';
 import './styles/layout.css';
 import './styles/header.css';
+import './styles/sidebar.css';
+import './styles/transitions.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
