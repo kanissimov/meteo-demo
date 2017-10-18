@@ -10,6 +10,10 @@ mongoose.connect(keys.mongoUri);
 
 const app = express();
 
+if (process.env.NODE_ENV === 'production') {
+  app.set('forceSSLOptions', { trustXFPHeader: true });
+}
+
 app.use(bodyParser.json());
 app.use(
   cookieSession({

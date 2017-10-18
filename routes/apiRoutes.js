@@ -39,7 +39,7 @@ module.exports = app => {
     );
     const context = {
       user: user ? { name: user.name } : null,
-      selectedCity: user ? user.selectedCity : cities[0].id,
+      selectedCity: user ? user.selectedCity || cities[0].id : cities[0].id,
       cities
     };
     res.send(context);
