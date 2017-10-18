@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Forecast from './Forecast';
 import CitySelector from '../selectors/city';
-import ChartSelector from '../selectors/baseChart';
+import ChartSelector from '../selectors/chartData';
 
 class Details extends Component {
   render() {

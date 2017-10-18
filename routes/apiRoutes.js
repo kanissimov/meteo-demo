@@ -1,5 +1,7 @@
 const weather = require('../services/weather');
 
+const DEFAULT_CITIES = [6167865, 5128581, 2643743, 2988507];
+
 module.exports = app => {
   app.post('/api/fetch_city', async (req, res) => {
     try {
@@ -28,20 +30,18 @@ module.exports = app => {
 
   app.get('/api/fetch_context', async (req, res) => {
     const user = req.user && req.user.toObject({ virtuals: true });
-    if (user) {
-      const cities = await Promise.all(
-        user.cities.map(async city => {
-          return await weather.getInfo({ id: city.cityId });
-        })
-      );
-      const context = {
-        user: { name: user.name },
-        selectedCity: user.selectedCity,
-        cities: cities
-      };
-      res.send(context);
-    } else {
-      res.send(null);
-    }
+    const cityIds =
+      user && user.cities.length > 0
+        ? user.cities.map(e => e.cityId)
+        : DEFAULT_CITIES;
+    const cities = await Promise.all(
+      cityIds.map(async id => await weather.getInfo({ id }))
+    );
+    const context = {
+      user: user ? { name: user.name } : null,
+      selectedCity: user ? user.selectedCity : cities[0].id,
+      cities
+    };
+    res.send(context);
   });
 };

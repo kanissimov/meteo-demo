@@ -10,7 +10,7 @@ export default ({ city, onRemove, onSelect, selected }) => {
         <div className="weather-icon">
           <img
             alt=""
-            src={`http://openweathermap.org/img/w/${city.current.icon}.png`}
+            src={`https://openweathermap.org/img/w/${city.current.icon}.png`}
           />
         </div>
         <i className="close-button material-icons" onClick={() => onRemove(id)}>

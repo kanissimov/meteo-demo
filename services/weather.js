@@ -21,7 +21,6 @@ const getInfo = async ({ q, id: cityId }) => {
   const forecastData = await getForecast({ q, id: cityId });
   const currentData = await getCurrent(forecastData.city.id);
   // console.log(`current: ${JSON.stringify(currentData)}`);
-  //  console.log(`forecast: ${forecatsData}`);
   return weatherData(currentData, forecastData);
 };
 
