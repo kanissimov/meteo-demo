@@ -15,7 +15,11 @@ import reduxThunk from 'redux-thunk';
 import App from './components/App';
 import reducers from './reducers';
 
-const middleware = [reduxThunk];
+const middleware =
+  process.env.NODE_ENV !== 'production'
+    ? [require('redux-immutable-state-invariant').default(), reduxThunk]
+    : [reduxThunk];
+
 const store = createStore(
   reducers,
   {},
