@@ -1,12 +1,8 @@
 export default city => {
   const temp = (city.forecast || []).map((e, i) => {
-    //let utcDate = new Date(e.dt * 1000);
     let tzDate = new Date((e.dt + city.tzOffset) * 1000);
     let hours = tzDate.getHours();
     let isLabel = hours >= 12 && hours < 15;
-    if (isLabel) {
-      console.log(`hours: ${hours}`);
-    }
 
     return {
       x: tzDate.getTime(),
@@ -24,7 +20,6 @@ export default city => {
       }
     };
   });
-  //console.log(temp);
   const config = {
     chart: {},
     title: {
@@ -68,6 +63,9 @@ export default city => {
 };
 
 /*
+//if (isLabel) {
+//  console.log(`hours: ${hours}`);
+//}
 
 ,
 marker:

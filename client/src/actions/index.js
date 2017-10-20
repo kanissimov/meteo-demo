@@ -5,7 +5,8 @@ import {
   REMOVE_CITY,
   SELECT_CITY,
   CONTEXT_SAVED,
-  FETCH_CONTEXT
+  FETCH_CONTEXT,
+  REORDER_CITIES
 } from './types';
 
 export const fetchContext = () => async dispatch => {
@@ -28,3 +29,8 @@ export const fetchCity = ({ q, id }) => async dispatch => {
 export const removeCity = id => ({ type: REMOVE_CITY, payload: id });
 
 export const selectCity = id => ({ type: SELECT_CITY, payload: id });
+
+export const reorderCities = (sourceIndex, targetIndex) => ({
+  type: REORDER_CITIES,
+  payload: { sourceIndex, targetIndex }
+});

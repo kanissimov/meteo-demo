@@ -1,4 +1,9 @@
-import { FETCH_CITY, REMOVE_CITY, FETCH_CONTEXT } from '../actions/types';
+import {
+  FETCH_CITY,
+  REMOVE_CITY,
+  FETCH_CONTEXT,
+  REORDER_CITIES
+} from '../actions/types';
 
 export default function(state = [], action) {
   switch (action.type) {
@@ -11,6 +16,11 @@ export default function(state = [], action) {
         : state;
     case REMOVE_CITY:
       return state.filter(e => e.id !== action.payload);
+    case REORDER_CITIES:
+      const result = state.slice();
+      const [removed] = result.splice(action.payload.sourceIndex, 1);
+      result.splice(action.payload.targetIndex, 0, removed);
+      return result;
     default:
       return state;
   }

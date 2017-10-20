@@ -11,7 +11,7 @@ const Layout = () => {
   return [
     <Header key="header" />,
     <Route key="1" path="/" exact component={Main} />,
-    <Route key="2" path="/:city" exact component={Main} />,
+    //    <Route key="2" path="/:city" exact component={Main} />,
     <Footer key="footer" />
   ];
 };
